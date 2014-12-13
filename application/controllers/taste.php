@@ -19,6 +19,7 @@ class Taste extends MY_Controller {
 
 	public function index()
 	{
+		$_SESSION = Array();
 		$this->loadview('taste');
 	}
 
@@ -70,7 +71,7 @@ class Taste extends MY_Controller {
 		$this->data['hightrade'] = $result[1];
 
 
-		$render = $this->Vmr_model->get_page_render("2013", "Honda", "Civic");
+		$render = $this->Vmr_model->get_page_render($_SESSION['year'], $_SESSION['make'], $_SESSION['model']);
 
 		$result = $this->parser->parse_vmr_final($render);
 
