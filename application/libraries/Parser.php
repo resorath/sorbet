@@ -29,5 +29,19 @@ class Parser
 
 	}
 
+	public function parse_vmr_final($render)
+	{
+		$searchfor = "<table border=\"1\" cellspacing=\"0\" width=\"440\" style=\"border-collapse: collapse\" bordercolor=\"#EEEEEE\" cellpadding=\"0\">";
+		$endat = "</table>";
+
+		$starts = strpos($render, $searchfor);
+		$ends = strpos($render, $endat, $starts);
+
+		$table_payload = substr($render, $starts, ($ends - $starts)) . "</table>";
+
+		return $table_payload;
+
+	}
+
 
 }

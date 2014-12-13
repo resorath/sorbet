@@ -33,4 +33,23 @@ class Test extends CI_Controller {
 
 		print_r($result);
 	}
+
+	public function vmrpagecode()
+	{
+		$this->load->library('translate');
+
+		echo $this->translate->vmr_pagecode('2012', 'Ford', 'Focus');
+	}
+
+	public function vmrrender()
+	{
+		$this->load->model("Vmr_model");
+		$this->load->library('parser');
+
+		$render = $this->Vmr_model->get_page_render("2013", "Honda", "Civic");
+
+		$result = $this->parser->parse_vmr_final($render);
+
+		echo $result;
+	}
 }

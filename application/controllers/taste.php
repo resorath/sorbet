@@ -44,7 +44,40 @@ class Taste extends MY_Controller {
 
 	public function trimstyle()
 	{
+		// process post data
+		// Note: make, model, year already processed
+		$_SESSION['km'] = trim($_POST['km']);
+
 		$this->loadview("trimstyle", $this->data);
+	}
+
+	public function dispense()
+	{
+		$this->load->model("Cbb_model");
+		$this->load->library('parser');
+		$this->load->model("Vmr_model");
+
+		// process post data
+		$_SESSION['trim'] = $_POST['trim'];
+		$_SESSION['style'] = $_POST['style'];
+
+		// make, model, year, trim, style, km
+		$render = $this->Cbb_model->get_page_render($_SESSION['year'], $_SESSION['make'], $_SESSION['model'], $_SESSION['trim'], $_SESSION['style'], $_SESSION['km']);
+
+		$result = $this->parser->parse_cbb_final($render);
+
+		$this->data['lowtrade'] = $result[0];
+		$this->data['hightrade'] = $result[1];
+
+
+		$render = $this->Vmr_model->get_page_render("2013", "Honda", "Civic");
+
+		$result = $this->parser->parse_vmr_final($render);
+
+		$this->data['vmrrender'] = $result;
+
+		$this->loadview("dispense", $this->data);
+
 	}
 }
 

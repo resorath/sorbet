@@ -39,11 +39,12 @@ class Cbb_model extends CI_Model {
 		curl_setopt($ch, CURLOPT_URL,$url);
 		curl_setopt($ch,CURLOPT_USERAGENT,'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/12.0.0.13');
 		$result=curl_exec($ch);
-		curl_close($ch);
 
 		if(curl_errno($ch)){
 		    echo 'Curl error: ' . curl_error($ch);
 		}
+
+		curl_close($ch);
 
 		return json_decode($result, true);
 
@@ -52,7 +53,7 @@ class Cbb_model extends CI_Model {
     function get_page_render($year, $make, $model, $trim, $style, $currentkm)
     {
     	$url = "http://www.canadianblackbook.com/black-book-values/index/display/neworused/used/year/".$year."/make/".$make."/postalcode/_/model/".$model."/mode/tradein/trim/".$trim."/style/".$style."/selectedoptions/_/currentkilometers/".$currentkm."/iiyear/2015/iimake/Undecided/iimodel/Undecided/interval/30";
-    	echo $url;
+    	//echo $url;
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

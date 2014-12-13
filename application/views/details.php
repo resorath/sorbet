@@ -2,7 +2,7 @@
 	<h2 class="topper">Toppings</h2>
 
 	<?php 
-		$attribs = array('class' => 'horizontal-form');
+		$attribs = array('class' => 'horizontal-form', 'id' => 'detailsForm');
 		echo form_open('taste/trimstyle', $attribs); 
 	?>
 
@@ -16,7 +16,10 @@
       <input type="text" class="form-control" id="year" name="year" placeholder="Year (*)">
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="year" name="year" placeholder="Retail $">
+      <input type="text" class="form-control" id="km" name="km" placeholder="KM (*)">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="retail" name="retail" placeholder="Retail $">
     </div>
     <hr>
     <div class="form-group">
@@ -30,8 +33,9 @@
     </div>
 
     <div class="form-group">
-      <button type="submit" class="btn btn-primary">Go To Sauces Station</button>
+      <button type="button" type="button" id="validatetoppings" class="btn btn-primary">Sauce</button>
   	</div>
   </div>
+  </form>
 
 </div>
