@@ -77,6 +77,7 @@ class Taste extends MY_Controller {
 
 		$this->data['vmrrender'] = $result;
 
+		$this->data['scale'] = "0.6";  // set mobile scaling to 0.6 for the large table
 		$this->loadview("dispense", $this->data);
 
 	}
