@@ -7,16 +7,16 @@
 	?>
 
 	<div class="form-group">
-      <input type="text" class="form-control" id="make" name="make" placeholder="Make (*)">
+      <input type="text" class="form-control" id="make" name="make" placeholder="Make (*)" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="model" name="model" placeholder="Model (*)">
+      <input type="text" class="form-control" id="model" name="model" placeholder="Model (*)" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="year" name="year" placeholder="Year (*)">
+      <input type="text" class="form-control" id="year" name="year" placeholder="Year (*)" required>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="km" name="km" placeholder="KM (*)">
+      <input type="text" class="form-control" id="km" name="km" placeholder="KM (*)" required>
     </div>
     <div class="form-group">
       <input type="text" class="form-control" id="retail" name="retail" placeholder="Retail $">
@@ -33,7 +33,7 @@
     </div>
 
     <div class="form-group">
-      <button type="button" type="button" id="validatetoppings" class="btn btn-primary">Sauce</button>
+      <button type="submit" id="validatetoppings" class="btn btn-primary">Sauce</button>
   	</div>
   </div>
   </form>

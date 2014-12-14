@@ -14,26 +14,32 @@ $(document).ready(function(){
 
 });
 
-$('#validatetoppings').click(function(){
+$('#detailsForm').submit(function(){
 	// validate
 	validateOkay = true;
-	$.getJSON(config.base + 'ajax/getTrim?y='+$('#year').val()+'&a='+$('#make').val()+'&o='+$('#model').val(), function(data) {
-		$.each(data, function(key, val){
-			console.log(val);
-			$.each(val, function(seriesId, series){
-				if(series == "error")
-				{
-					alert(series);
-					validateOkay = false;
-				}
+	$.ajax({
+		url: config.base + 'ajax/getTrim?y='+$('#year').val()+'&a='+$('#make').val()+'&o='+$('#model').val(), 
+		dataType: 'json',
+		async: false,
+		success: function(data) {
+			$.each(data, function(key, val){
+				console.log(val);
+				$.each(val, function(seriesId, series){
+					if(series == "error")
+					{
+						alert('No combinations of those things exist');
+						validateOkay = false;
+					}
+				});
 			});
-
-		});
+		}
 
 	});
 
 	if(validateOkay)
-		$('#detailsForm').submit();
+		return true;
+	else
+		return false;
 
 
 });
